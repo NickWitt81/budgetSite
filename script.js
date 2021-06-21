@@ -8,16 +8,24 @@ let netGainLoss = document.getElementById('net');
 
 let startIn = 0;
 let startEx = 0;
+let net = 0;
 
 const addIncome = () => {
-  num = parseFloat(income.value);
-  start = start + num;
-  totalIncome.innerHTML = start;
-  return start;
+  let num = parseFloat(income.value);
+  startIn = startIn + num;
+  totalIncome.innerHTML = startIn;
+  net = net + parseFloat(income.value);
+  netGainLoss.innerHTML = net;
+  return startIn;
 }
 
 const addExpense = () => {
-  
+  let num = parseFloat(expenses.value);
+  startEx = startEx + num;
+  totalExpense.innerHTML = startEx;
+  net = net - parseFloat(expenses.value);
+  netGainLoss.innerHTML = net;
+  return startEx;
 }
 
 incomeButton.addEventListener('click', addIncome);
