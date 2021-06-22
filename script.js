@@ -12,20 +12,30 @@ let net = 0;
 
 const addIncome = () => {
   let num = parseFloat(income.value);
-  startIn = startIn + num;
-  totalIncome.innerHTML = startIn;
-  net = net + parseFloat(income.value);
-  netGainLoss.innerHTML = net;
-  return startIn;
+  if(income.value.length === 0){
+    alert('please input a number');
+  }else{
+    startIn = startIn + num;
+    totalIncome.innerHTML = `$ ${startIn}`;
+    net = net + parseFloat(income.value);
+    netGainLoss.innerHTML = `$ ${net}`;
+    income.value = '';
+    return startIn;
+  }
 }
 
 const addExpense = () => {
   let num = parseFloat(expenses.value);
-  startEx = startEx + num;
-  totalExpense.innerHTML = startEx;
-  net = net - parseFloat(expenses.value);
-  netGainLoss.innerHTML = net;
-  return startEx;
+  if(expenses.value.length === 0){
+    alert('please input a number')
+  } else {
+    startEx = startEx + num;
+    totalExpense.innerHTML = `$ ${startEx}`;
+    net = net - parseFloat(expenses.value);
+    netGainLoss.innerHTML = `$ ${net}`;;
+    expenses.value = '';
+    return startEx;
+  }
 }
 
 incomeButton.addEventListener('click', addIncome);
